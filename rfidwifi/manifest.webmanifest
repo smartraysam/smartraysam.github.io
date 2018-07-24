@@ -1,0 +1,23 @@
+{
+"name": "Wi-Fi RFID DOOR CoNTROL",
+"short_name": "Wi-Fi RFID",
+"display": "standalone",
+"start_url": "/index.html",
+"background_color": "#80CBC4",
+"description": "Wi-Fi RFID DOOR CoNTROL",
+"lang": "en-US",
+"scope": "/RFIDWiFi/",
+"theme_color": "#004D40",
+"icons": [
+    {
+      "src": "shekel.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+        "src": "shekel.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+]
+}

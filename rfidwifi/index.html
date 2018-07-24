@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wi-Fi RFID DOOR CONTROL</title>
+        <link rel="stylesheet" type="text/css" href="/rfidwifi/css/inline.css">
+        <link rel="stylesheet" type="text/css" href="/rfidwifi/css/bootstrap.min.css">
+        <!-- TODO add manifest here -->
+        <meta name="theme-color" content="#004D40" />
+        <link rel="manifest" href="manifest.webmanifest">
+        <!-- Add to home screen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Wi-Fi RFID Security Door">
+        <link rel="apple-touch-icon" href="rfidwifi/img/shekel.png">
+        <meta name="msapplication-TileImage" content="rfidwifi/img/shekel.png">
+        <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    </head>
+
+    <body>
+        <header class="header">
+            <h1 class="header__title">WI-FI RFID DOOR</h1>
+        </header>
+
+        <main class="main">
+            <div class style="text-align:center; margin-bottom: 10px;
+                margin-top: 50px">
+                <h5>LOGIN PLATFORM</h5>
+            </div>
+
+            <div class="card_login">
+                <div class="container">
+                    <div class="logoimg">
+                        <img src="rfidwifi/img/shekel.png" alt="logo">
+                    </div>
+                    <form style="margin-top:20px;">
+                        <label for="inputEmail" class="sr-only">User iD</label>
+                        <input type="text" id="inputEmail" class="form-control"
+                            placeholder="User ID" required autofocus>
+                        <br>
+                        <label for="inputPassword" class="sr-only">Passcode</label>
+                        <input type="password" id="inputPassword"
+                            class="form-control" placeholder="Passcode"
+                            required>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me">
+                                Remember me
+                            </label>
+                        </div>
+                        <button id="login" class="btn btn-lg btn-primary
+                            btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <script src="/rfidwifi/scripts/idb.js" async></script>
+        <script src="/rfidwifi/scripts/index.js" async></script>
+        <div hidden class="toast" id="simple-toast">A new version is available
+            <button id="refresh">refresh</button>
+            <button id="dismiss">dismiss</button>
+        </div>
+        <div id="snackbar"></div>
+        <footer>
+            WI-FI RFID DOOR
+            <br>&copy;2017-2018
+            <br>Design by ERIT Software Dev. Team
+        </footer>
+    </body>
+
+</html>

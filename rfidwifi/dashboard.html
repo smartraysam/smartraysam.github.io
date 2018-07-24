@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi RFID DOOR CONTROL</title>
+    <link rel="stylesheet" type="text/css" href="/rfidwifi/css/inline.css">
+    <link rel="stylesheet" type="text/css" href="/rfidwifi/css/room.css">
+    <link rel="stylesheet" type="text/css" href="/rfidwifi/css/bootstrap.min.css">
+    <!-- TODO add manifest here -->
+    <meta name="theme-color" content="#004D40" />
+    <link rel="manifest" href="manifest.webmanifest">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Wi-Fi RFID Security Door">
+    <link rel="apple-touch-icon" href="rfidwifi/img/shekel.png">
+    <meta name="msapplication-TileImage" content="rfidwifi/img/shekel.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+  </head>
+
+  <body>
+
+    <header class="header">
+      <h1 class="header__title">WI-FI RFID DOOR</h1>
+      <button id="butAdd" class="headerButton" aria-label="Add"></button>
+      <button id="butChgpwd" class="headerButton" aria-label="ChgPWD"></button>
+      <button id="butLogout" class="headerButton" aria-label="LogOut"></button>
+    </header>
+    <main class="main">
+      <h4 id="info" style="text-align: center; margin-top: 100px">CLICK <img
+          src="rfidwifi/img/ic_add_white_24px.svg" alt="logo">
+        <br> TO
+        <br> ADD A DOOR</h4>
+      <section style="margin-left: 20px;margin-right: 20px; margin-top: 20px">
+        <div class="room-list box">
+            <div class="heading"><h2>Available Doors</h2></div>
+            <ul>
+            </ul>
+        </div>
+        <!-- /todo-room
+        <div class="complete-room box">
+            <div class="heading"><h2>Allocated Doors</h2></div>
+            <ul>
+            </ul>
+        </div> -->
+
+      </section>
+    </main>
+
+    <div class="dialog-container">
+      <div class="dialog">
+        <div class="dialog-title">Add new Room</div>
+        <div class="dialog-body">
+          <form style="margin-top:10px;">
+            <label for="inputText" class="sr-only">Room Number</label>
+            <input type="text" id="inputRoom" class="form-control"
+              placeholder="Room Number" required autofocus>
+            <br>
+            <label for="inputText" class="sr-only">IP Address</label>
+            <input type="text" id="inputIP" class="form-control" placeholder="IP Address" required>
+          </form>
+        </div>
+        <div class="dialog-buttons">
+          <button id="butAddRoom" class="buttonAdd">Add</button>
+          <button id="butAddCancel" class="buttonCan">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-containerchgcode">
+      <div class="dialog">
+        <div class="dialog-title">Change Passcode</div>
+        <div class="dialog-body">
+          <form style="margin-top:10px;">
+            <label for="inputPassword" class="sr-only">Old passcode</label>
+            <input type="password" id="inputOldcode" class="form-control"
+              placeholder="Old Passcode" required autofocus>
+            <br>
+            <label for="inputPassword" class="sr-only">New Passcode</label>
+            <input type="password" id="inputNewcode" class="form-control" placeholder="New Passcode" required>
+          </form>
+        </div>
+        <div class="dialog-buttons">
+          <button id="butchgCode" class="buttoncode">Ok</button>
+          <button id="butCancel" class="buttonCancode">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/rfidwifi/scripts/idb.js" async></script>
+    <script src="/rfidwifi/scripts/room.js" async></script>
+  
+    <div hidden class="toast" id="simple-toast">A new version is available
+      <button id="refresh">refresh</button>
+      <button id="dismiss">dismiss</button>
+    </div>
+    <div id="snackbar"></div>
+    <footer>
+      WI-FI RFID DOOR
+      <br>&copy;2017-2018
+      <br>Design by ERIT Software Dev. Team
+    </footer>
+  </body>
+
+</html
