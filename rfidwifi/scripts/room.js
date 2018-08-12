@@ -148,71 +148,83 @@ var addRoom = function() {
   }
 };
 
+
+
 var addTagEx = function(room, ip) {
-  const url = `https://${ip}/addTagEx/${room}`.trim();
-  fetch(url)
-    .then(response => {
-      return response;
-    })
-    .then(json => {
-      console.log("parsed json", json);
-      // if success add to list
-      snack("Room added successfully");
-    })
-    .catch(ex => {
-      console.log("parsing erro", ex);
-      snack("Error occur while adding room,Try again!!!");
-      // show toast not succesfful
-    });
+  // const url = `https://${ip}/addTagEx/${room}`.trim();
+  const url = `http://${ip}/gpio/1`.trim();
+  window.location.href = url;
+  // fetch(url)
+  //   .then(response => {
+  //     return response;
+  //   })
+  //   .then(json => {
+  //     console.log("parsed json", json);
+  //     // if success add to list
+  //     snack("Room added successfully");
+  //   })
+  //   .catch(ex => {
+  //     console.log("parsing erro", ex);
+  //     snack("Error occur while adding room,Try again!!!");
+  //     // show toast not succesfful
+  //   });
 };
 var addTag = function(ip, room) {
-  const url = `https://${ip}/addTag/${room}`.trim();
-  fetch(url)
-    .then(response => {
-      return response;
-    })
-    .then(json => {
-      console.log("parsed json", json);
-      // if success add to list
-      snack("Room added successfully");
-    })
-    .catch(ex => {
-      console.log("parsing erro", ex);
-      snack("Error occur while adding room,Try again!!!");
-      // show toast not succesfful
-    });
+  // const url = `https://${ip}/addTag/${room}`.trim();
+  const url = `http://${ip}/gpio/1`.trim();
+  console.log("parsed json", url);
+  window.location.href = url;
+
+  // fetch(url)
+  //   .then(response => {
+  //     return response;
+  //   })
+  //   .then(json => {
+  //     console.log("parsed json", json);
+  //     // if success add to list
+  //     snack("Room added successfully");
+  //   })
+  //   .catch(ex => {
+  //     console.log("parsing erro", ex);
+  //     snack("Error occur while adding room,Try again!!!");
+  //     // show toast not succesfful
+  //   });
 };
 var getTag = function(ip, room) {
-  const url = `https://${ip}/getTag/${room}`.trim();
-  fetch(url)
-    .then(response => {
-      return response;
-    })
-    .then(json => {
-      console.log("parsed json", json);
-      // if success add to list
-      snack("Room added successfully");
-    })
-    .catch(ex => {
-      console.log("parsing erro", ex);
-      snack("Error occur while adding room,Try again!!!");
-      // show toast not succesfful
-    });
+  const url = `http://${ip}/getTag/${room}`.trim();
+  window.location.href = url;
+  // fetch(url)
+  //   .then(response => {
+  //     return response;
+  //   })
+  //   .then(json => {
+  //     console.log("parsed json", json);
+  //     // if success add to list
+  //     snack("Room added successfully");
+  //   })
+  //   .catch(ex => {
+  //     console.log("parsing erro", ex);
+  //     snack("Error occur while adding room,Try again!!!");
+  //     // show toast not succesfful
+  //   });
 };
 var removeTag = function(ip, room) {
-  const url = `https://${ip}/removeTag/${room}`.trim();
-  fetch(url)
-    .then(response => {
-      return response;
-    })
-    .then(json => {
-      console.log("parsed json", json);
-      // if success remove
-    })
-    .catch(ex => {
-      console.log("parsing erro", ex);
-    });
+  // const url = `https://${ip}/removeTag/${room}`.trim();
+  const url = `http://${ip}/gpio/0`.trim();
+  window.location.href = url;
+  // fetch(url)
+  //   .then(response => {
+  //     return response;
+  //   })
+  //   .then(json => {
+  //     console.log("parsed json", json);
+  //     // if success remove
+  //   })
+  //   .catch(ex => {
+  //     console.log("parsing erro", ex);
+  //   });
 };
+
 
 //DELETE ROOM FUNCTIONS
 var removeRoomList = function() {
