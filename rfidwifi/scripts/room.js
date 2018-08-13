@@ -151,8 +151,8 @@ var addRoom = function() {
 
 
 var addTagEx = function(room, ip) {
-  // const url = `https://${ip}/addTagEx/${room}`.trim();
-  const url = `http://${ip}/gpio/1`.trim();
+  const url = `http://${ip}/addTagEx/${room}`.trim();
+ // const url = `http://${ip}/gpio/1`.trim();
   window.location.href = url;
   // fetch(url)
   //   .then(response => {
@@ -170,8 +170,8 @@ var addTagEx = function(room, ip) {
   //   });
 };
 var addTag = function(ip, room) {
-  // const url = `https://${ip}/addTag/${room}`.trim();
-  const url = `http://${ip}/gpio/1`.trim();
+  const url = `http://${ip}/addTag/${room}`.trim();
+ // const url = `http://${ip}/gpio/1`.trim();
   console.log("parsed json", url);
   window.location.href = url;
 
@@ -209,8 +209,8 @@ var getTag = function(ip, room) {
   //   });
 };
 var removeTag = function(ip, room) {
-  // const url = `https://${ip}/removeTag/${room}`.trim();
-  const url = `http://${ip}/gpio/0`.trim();
+  const url = `http://${ip}/removeTag/${room}`.trim();
+  //const url = `http://${ip}/gpio/0`.trim();
   window.location.href = url;
   // fetch(url)
   //   .then(response => {
