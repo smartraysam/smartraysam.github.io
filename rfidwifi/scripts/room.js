@@ -63,10 +63,12 @@ const dbPromise = idb.open("hotel-db", 1, upgradeDb => {
 });
 
 registerServiceWorker();
-
 var addDialog = document.querySelector(".dialog-container");
 var addChgDialog = document.querySelector(".dialog-containerchgcode");
+var addKeyDialog = document.querySelector(".dialog-containerKey");
 var toDoUl = document.querySelector(".room-list ul");
+var deviceip;
+var opt;
 //CEATE FUNCTIONS
 var snack = text => {
   // var x = document.getElementById("snackbar");
@@ -148,83 +150,25 @@ var addRoom = function() {
   }
 };
 
-
-
-var addTagEx = function(room, ip) {
-  const url = `http://${ip}/addTagEx/${room}`.trim();
+var addTagEx = function(ip,key) {
+  const url = `http://${ip}/addTagEx/${key}`.trim();
  // const url = `http://${ip}/gpio/1`.trim();
   window.location.href = url;
-  // fetch(url)
-  //   .then(response => {
-  //     return response;
-  //   })
-  //   .then(json => {
-  //     console.log("parsed json", json);
-  //     // if success add to list
-  //     snack("Room added successfully");
-  //   })
-  //   .catch(ex => {
-  //     console.log("parsing erro", ex);
-  //     snack("Error occur while adding room,Try again!!!");
-  //     // show toast not succesfful
-  //   });
+
 };
-var addTag = function(ip, room) {
-  const url = `http://${ip}/addTag/${room}`.trim();
- // const url = `http://${ip}/gpio/1`.trim();
-  console.log("parsed json", url);
+var addTag = function(ip,key) {
+  const url = `http://${ip}/addTag/${key}`.trim();
   window.location.href = url;
 
-  // fetch(url)
-  //   .then(response => {
-  //     return response;
-  //   })
-  //   .then(json => {
-  //     console.log("parsed json", json);
-  //     // if success add to list
-  //     snack("Room added successfully");
-  //   })
-  //   .catch(ex => {
-  //     console.log("parsing erro", ex);
-  //     snack("Error occur while adding room,Try again!!!");
-  //     // show toast not succesfful
-  //   });
 };
-var getTag = function(ip, room) {
-  const url = `http://${ip}/getTag/${room}`.trim();
+var getTag = function(ip, key) {
+  const url = `http://${ip}/getTag/${key}`.trim();
   window.location.href = url;
-  // fetch(url)
-  //   .then(response => {
-  //     return response;
-  //   })
-  //   .then(json => {
-  //     console.log("parsed json", json);
-  //     // if success add to list
-  //     snack("Room added successfully");
-  //   })
-  //   .catch(ex => {
-  //     console.log("parsing erro", ex);
-  //     snack("Error occur while adding room,Try again!!!");
-  //     // show toast not succesfful
-  //   });
 };
-var removeTag = function(ip, room) {
-  const url = `http://${ip}/removeTag/${room}`.trim();
-  //const url = `http://${ip}/gpio/0`.trim();
+var removeTag = function(ip, key) {
+  const url = `https://${ip}/removeTag/${key}`.trim();
   window.location.href = url;
-  // fetch(url)
-  //   .then(response => {
-  //     return response;
-  //   })
-  //   .then(json => {
-  //     console.log("parsed json", json);
-  //     // if success remove
-  //   })
-  //   .catch(ex => {
-  //     console.log("parsing erro", ex);
-  //   });
 };
-
 
 //DELETE ROOM FUNCTIONS
 var removeRoomList = function() {
@@ -252,44 +196,43 @@ var removeRoomList = function() {
 };
 
 var addKeyRoom = function() {
+  toggleKeyDialog(true);
+  opt=1;
   console.log("add key to room...");
   var listItem = this.parentNode;
   var inText = listItem.innerText;
   console.log(inText);
-  var rm = inText
-    .substring(inText.indexOf(":") + 1, inText.indexOf("IP:"))
-    .trim();
-  var ip = inText
+  deviceip = inText
     .substring(inText.lastIndexOf(":") + 1, inText.indexOf("Delete"))
     .trim();
-  addTag(ip, rm);
+  
 };
 var getKeyRoom = function() {
+  toggleKeyDialog(true);
+  opt=2;
   console.log("get key to room...");
   var listItem = this.parentNode;
   var inText = listItem.innerText;
   console.log(inText);
-  var rm = inText
-    .substring(inText.indexOf(":") + 1, inText.indexOf("IP:"))
-    .trim();
-  var ip = inText
+  deviceip = inText
     .substring(inText.lastIndexOf(":") + 1, inText.indexOf("Delete"))
     .trim();
-  getTag(ip, rm);
+
+ 
 };
 
 var removeKeyRoom = function() {
+  toggleKeyDialog(true);
+  opt=3;
   console.log("remove key to room...");
   var listItem = this.parentNode;
   var inText = listItem.innerText;
   console.log(inText);
-  var rm = inText
-    .substring(inText.indexOf(":") + 1, inText.indexOf("IP:"))
-    .trim();
-  var ip = inText
+  deviceip = inText
     .substring(inText.lastIndexOf(":") + 1, inText.indexOf("Delete"))
     .trim();
-  removeTag(ip, rm);
+
+ 
 };
 
 //A FUNCTION THAT BINDS EACH OF THE ELEMENTS THE INCOMPLETE LIST
@@ -331,6 +274,15 @@ var toggleChgDialog = function(visible) {
     addChgDialog.classList.remove("dialog-containerchgcode--visible");
   }
 };
+
+var toggleKeyDialog = function(visible) {
+  if (visible) {
+    addKeyDialog.classList.add("dialog-containerKey--visible");
+  } else {
+    addKeyDialog.classList.remove("dialog-containerKey--visible");
+  }
+};
+
 
 toggleInfo = function(visible) {
   var x = document.getElementById("info");
@@ -379,8 +331,8 @@ document.getElementById("butChgpwd").addEventListener("click", function() {
 });
 document.getElementById("butAddRoom").addEventListener("click", function() {
   // Add the newly selected city
-  console.log("add room");
   addRoom();
+  toggleAddDialog(false); 
 });
 document.getElementById("butAdd").addEventListener("click", function() {
   // Open/show the add new city dialog
@@ -404,9 +356,30 @@ document.getElementById("butCancel").addEventListener("click", function() {
   toggleChgDialog(false);
 });
 
+document.getElementById("butOk").addEventListener("click", function() {
+  // Open/show the add new city dialog
+  let keyNum = document.getElementById("inputkey").value;
+  if(opt===1){
+    addTag(deviceip,keyNum);
+
+  }else if(opt===2){
+    getTag(deviceip,keyNum);
+  }else if(opt===3){
+    removeTag(deviceip,keyNum);
+  }
+  toggleKeyDialog(false);
+
+});
+
+document.getElementById("butCan").addEventListener("click", function() {
+  // Close the add new city dialog
+  toggleKeyDialog(false);
+});
+
+
 document.getElementById("butLogout").addEventListener("click", function() {
   // Close the add new city dialog
-  window.location.href = "/rfidwifi/index.html";
+  window.location.href = "./index.html";
 });
 document.getElementById("refresh").addEventListener("click", function() {
   // Close the add new city dialog
@@ -423,7 +396,6 @@ dbPromise
     const tx = db.transaction("rooms");
     const roomStore = tx.objectStore("rooms");
     const nameIndex = roomStore.index("name");
-
     return nameIndex.getAll();
   })
   .then(rooms => {
