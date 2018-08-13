@@ -123,7 +123,7 @@ var addRoom = function() {
   //FOR CLARITY, GRAB THE INPUTTED TEXT AND STORE IT IN A VAR
   let roomNum = document.getElementById("inputRoom").value;
   let ipAddress = document.getElementById("inputIP").value;
-  var label = `Room: ${roomNum} \nIP: ${ipAddress}`;
+  var label = `DEVICE ID: ${roomNum} \nIP: ${ipAddress}`;
   if (roomNum === "" || ipAddress === "") {
   } else {
     var listItem = createNewRoom(label);
