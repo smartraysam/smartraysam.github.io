@@ -166,7 +166,7 @@ var getTag = function(ip, key) {
   window.location.href = url;
 };
 var removeTag = function(ip, key) {
-  const url = `https://${ip}/removeTag/${key}`.trim();
+  const url = `http://${ip}/removeTag/${key}`.trim();
   window.location.href = url;
 };
 
