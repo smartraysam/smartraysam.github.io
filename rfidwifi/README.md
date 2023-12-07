@@ -1,1 +1,0 @@
-# smartraysam.github.io
